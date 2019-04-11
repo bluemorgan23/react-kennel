@@ -4,21 +4,20 @@ import "./location.css"
 export default class LocationList extends Component {
     render(){
         return (
-            <React.Fragment>
-                <h1>Location List</h1>
                 <div className="locationWrapper">
-                    <section className="locationCard">
-                        <h4>Nashville North</h4>
-                        <p>1233 North Nashville Drive</p>
-                        <p>Nashville, TN</p>
-                    </section>
-                    <section className="locationCard">
-                        <h4>Nashville South</h4>
-                        <p>6045 Franklin Rd</p>
-                        <p>Nashville, TN</p>
+                <section className="locationCard">
+                <h1>Location List</h1>
+                        {
+                            this.props.locations.map(location => 
+                                <div key={location.id}>
+                                    <h4>{location.name}</h4>
+                                    <p>{location.address}</p>
+                                </div>
+                                )
+                        }
                     </section>
                 </div>
-            </React.Fragment>
+
         );
     }
 }

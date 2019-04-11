@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import EmployeeList from "./employee/EmployeeList"
 import LocationList from "./locations/LocationList";
+import AnimalList from "./animals/AnimalList"
 
 class Kennel extends Component {
 
@@ -23,9 +24,16 @@ class Kennel extends Component {
         { id: 2, name: "Nashville South", address: "10101 Binary Court" }
     ]
 
+    animalsFromAPI = [
+        { id: 1, name: "Toni", type: "Dog"},
+        { id: 2, name: "Roxie", type: "Dog"},
+        { id: 3, name: "Kitty", type: "Cat"}
+    ]
+
     state = {
         employees: this.employeesFromAPI,
-        locations: this.locationsFromAPI
+        locations: this.locationsFromAPI,
+        animals: this.animalsFromAPI
     }
     // (setState) Way of updating the state object. Forces anything that uses that state in a component to re-render the component. Accepts an object.
     // addEmployee = () => {
@@ -41,7 +49,7 @@ class Kennel extends Component {
                     <h1>Student Kennels</h1>
                     <LocationList locations={this.state.locations} />
                     <EmployeeList employees={this.state.employees} />
-                    {/* <button onClick={this.addEmployee}>Add Employee</button> */}
+                    <AnimalList animals={this.state.animals}/>
                 </article>
             </React.Fragment>
         )
