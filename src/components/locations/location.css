@@ -1,0 +1,4 @@
+.locationWrapper {
+    display: flex;
+    justify-content: space-evenly
+}
