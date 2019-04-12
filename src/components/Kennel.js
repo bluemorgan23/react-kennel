@@ -1,56 +1,15 @@
 import React, { Component } from "react"
-import EmployeeList from "./employee/EmployeeList"
-import LocationList from "./locations/LocationList";
-import AnimalList from "./animals/AnimalList"
+import NavBar from "./nav/NavBar"
+import ApplicationViews from "./ApplicationViews"
+// import "./Kennel.css"
+
 
 class Kennel extends Component {
-
-    /*
-        Although you will eventually be pulling your objects
-        from your json-server API, for this chapter, we're
-        faking it and just creating those arrays in the component
-        itself
-    */
-    employeesFromAPI = [
-        { id: 1, name: "Jessica Younker" },
-        { id: 2, name: "Jordan Nelson" },
-        { id: 3, name: "Zoe LeBlanc" },
-        { id: 4, name: "Blaise Roberts" }
-    ]
-
-    // This will eventually get pulled from the API
-    locationsFromAPI = [
-        { id: 1, name: "Nashville North", address: "500 Circle Way" },
-        { id: 2, name: "Nashville South", address: "10101 Binary Court" }
-    ]
-
-    animalsFromAPI = [
-        { id: 1, name: "Toni", type: "Dog"},
-        { id: 2, name: "Roxie", type: "Dog"},
-        { id: 3, name: "Kitty", type: "Cat"}
-    ]
-
-    state = {
-        employees: this.employeesFromAPI,
-        locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI
-    }
-    // (setState) Way of updating the state object. Forces anything that uses that state in a component to re-render the component. Accepts an object.
-    // addEmployee = () => {
-    //     let newEmployee = {id: 324, name: "Bubba Sparkle"}
-    //     let employeeList = this.state.employees
-    //     this.setState({employees: employeeList.push(newEmployee)});
-    // }
-
     render() {
         return (
             <React.Fragment>
-                <article className="kennel">
-                    <h1>Student Kennels</h1>
-                    <LocationList locations={this.state.locations} />
-                    <EmployeeList employees={this.state.employees} />
-                    <AnimalList animals={this.state.animals}/>
-                </article>
+                <NavBar />
+                <ApplicationViews />
             </React.Fragment>
         )
     }
@@ -59,3 +18,10 @@ class Kennel extends Component {
 export default Kennel
 
 
+// (setState) Way of updating the state object. Forces anything that uses that state in a component to re-render the component. Accepts an object.
+    // addEmployee = () => {
+    //     let newEmployee = {id: 324, name: "Bubba Sparkle"}
+    //     let employeeList = [...this.state.employees]
+    //     employeeList.push(newEmployee)
+    //     this.setState({employees: employeeList});
+    // }
