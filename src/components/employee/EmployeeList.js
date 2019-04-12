@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 class EmployeeList extends Component {
     render() {
         return (
-            <section className="employees">
+            <section className="content">
             <h2>Employee List</h2>
             {
                 this.props.employees.map(employee =>
