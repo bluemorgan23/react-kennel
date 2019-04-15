@@ -15,41 +15,69 @@ class ApplicationViews extends Component {
         itself
     */
 
-    employeesFromAPI = [
-        { id: 1, name: "Jessica Younker" },
-        { id: 2, name: "Jordan Nelson" },
-        { id: 3, name: "Zoe LeBlanc" },
-        { id: 4, name: "Blaise Roberts" }
-    ]
-
-    locationsFromAPI = [
-        { id: 1, name: "Nashville North", address: "500 Circle Way" },
-        { id: 2, name: "Nashville South", address: "10101 Binary Court" }
-    ]
-
-    animalsFromAPI = [
-        { id: 1, name: "Doodles" },
-        { id: 2, name: "Jack" },
-        { id: 3, name: "Angus" },
-        { id: 4, name: "Henley" },
-        { id: 5, name: "Derkins" },
-        { id: 6, name: "Checkers" }
-    ]
-
-    ownersFromAPI = [
-        { id: 1, name: "Bob", phoneNumber: "867-5309"},
-        { id: 2, name: "Tom", phoneNumber: "330-8004"},
-        { id: 3, name: "Jerry", phoneNumber: "457-0312"},
-        { id: 4, name: "Terry", phoneNumber: "214-0938"},
-        { id: 5, name: "Mary", phoneNumber: "867-5309"},
-        { id: 6, name: "Maury", phoneNumber: "235-7684"},
-    ]
-
     state = {
-        employees: this.employeesFromAPI,
-        locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI,
-        owners: this.ownersFromAPI
+        locations: [],
+        animals: [],
+        employees: [],
+        owners: []
+    }
+
+    componentDidMount() {
+        const newState = {}
+    
+        fetch("http://localhost:5002/animals")
+            .then(r => r.json())
+            .then(animals => newState.animals = animals)
+            .then(() => fetch("http://localhost:5002/employees")
+            .then(r => r.json()))
+            .then(employees => newState.employees = employees)
+            // .then(() => this.setState(newState))
+            .then(() => fetch("http://localhost:5002/locationsFromAPI")).then(r => r.json())
+            .then(locations => newState.locations = locations)
+            // .then(() => this.setState(newState))
+            .then(() => fetch("http://localhost:5002/ownersFromAPI"))
+            .then(r => r.json())
+            .then(owners => newState.owners = owners)
+            .then(() => this.setState(newState))
+    }
+
+    deleteAnimal = id => {
+        return fetch(`http://localhost:5002/animals/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/animals`))
+        .then(e => e.json())
+        .then(animals => this.setState({
+            animals: animals
+        })
+      )
+    }
+
+    deleteEmployee = id => {
+        return fetch(`http://localhost:5002/employees/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/employees`))
+        .then(e => e.json())
+        .then(employees => this.setState({
+            employees: employees
+        })
+      )
+    }
+
+    deleteOwner = id => {
+        return fetch(`http://localhost:5002/ownersFromAPI/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/ownersFromAPI`))
+        .then(e => e.json())
+        .then(owners => this.setState({
+            owners: owners
+        })
+      )
     }
 
     render() {
@@ -59,13 +87,13 @@ class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route path="/animals" render={(props) => {
-                    return <AnimalList animals={this.state.animals} />
+                    return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
                 <Route path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees} />
+                    return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} />
                 <Route path="/owners" render={(props) => {
-                    return <OwnerList owners={this.state.owners} />
+                    return <OwnerList deleteOwner={this.deleteOwner}owners={this.state.owners} />
                 }} />
             </React.Fragment>
         )

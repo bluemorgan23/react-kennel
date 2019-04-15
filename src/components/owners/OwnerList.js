@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
+import "./owner.css"
 
 class OwnerList extends Component {
     render(){
         return (
 
-            <section className="content">
-            <h2>Owner's List</h2>{
-                this.props.owners.map(owner => 
-                    <div key={owner.id}>
-                        <h4>{owner.name}</h4>
-                        <p>{owner.phoneNumber}</p>
+            <section className="owners content">
+            {
+                this.props.owners.map(owner =>
+                    <div key={owner.id} className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">
+                                {owner.name}
+                                <p>{owner.phoneNumber}</p>
+                                <button
+                                    onClick={() => this.props.deleteOwner(owner.id)}
+                                    className="card-link">Delete</button>
+                            </h5>
+                        </div>
                     </div>
-                    )
+                )
             }
             </section>
 

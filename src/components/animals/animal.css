@@ -1,4 +1,4 @@
-.employees {
+.animals {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -11,6 +11,7 @@
 
 .card {
     width: 10rem;
+    margin-bottom: 10px;
 }
 
 .card-title {
