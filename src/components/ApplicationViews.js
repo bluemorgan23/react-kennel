@@ -40,12 +40,7 @@ class ApplicationViews extends Component {
     }
 
     deleteAnimal = id => {
-        return fetch(`http://localhost:5002/animals/${id}`, {
-            method: "DELETE"
-        })
-        .then(e => e.json())
-        .then(() => fetch(`http://localhost:5002/animals`))
-        .then(e => e.json())
+        AnimalManager.removeAndList(id)
         .then(animals => this.setState({
             animals: animals
         })
@@ -53,12 +48,7 @@ class ApplicationViews extends Component {
     }
 
     deleteEmployee = id => {
-        return fetch(`http://localhost:5002/employees/${id}`, {
-            method: "DELETE"
-        })
-        .then(e => e.json())
-        .then(() => fetch(`http://localhost:5002/employees`))
-        .then(e => e.json())
+        EmployeeManager.removeAndList(id)
         .then(employees => this.setState({
             employees: employees
         })
@@ -66,12 +56,7 @@ class ApplicationViews extends Component {
     }
 
     deleteOwner = id => {
-        return fetch(`http://localhost:5002/ownersFromAPI/${id}`, {
-            method: "DELETE"
-        })
-        .then(e => e.json())
-        .then(() => fetch(`http://localhost:5002/ownersFromAPI`))
-        .then(e => e.json())
+        OwnerManager.removeAndList(id)
         .then(owners => this.setState({
             owners: owners
         })

@@ -6,5 +6,12 @@ export default {
     },
     getAll() {
         return fetch(`${baseURL}`).then(r => r.json())
+    },
+    removeAndList(id) {
+        return fetch(`${baseURL}/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => this.getAll())
     }
 }
