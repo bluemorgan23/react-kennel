@@ -4,7 +4,7 @@ import AnimalList from './animals/AnimalList'
 import LocationList from './locations/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from "./owners/OwnerList"
-import AnimalManager from "../modules/AnimalManager"
+import AnimalData from "../modules/AnimalManager"
 import EmployeeManager from "../modules/EmployeeManager"
 import OwnerManager from "../modules/OwnerManager"
 import LocationManager from "../modules/LocationManager"
@@ -28,19 +28,19 @@ class ApplicationViews extends Component {
     componentDidMount() {
         const newState = {}
     
-        AnimalManager.getAll()
+            AnimalData.all("animals")
             .then(animals => newState.animals = animals)
-            .then(() => EmployeeManager.getAll())
+            .then(() => EmployeeManager.all("employees"))
             .then(employees => newState.employees = employees)
-            .then(() => LocationManager.getAll())
+            .then(() => LocationManager.all("locationsFromAPI"))
             .then(locations => newState.locations = locations)
-            .then(() => OwnerManager.getAll())
+            .then(() => OwnerManager.all("ownersFromAPI"))
             .then(owners => newState.owners = owners)
             .then(() => this.setState(newState))
     }
 
     deleteAnimal = id => {
-        AnimalManager.removeAndList(id)
+        AnimalData.removeAndList(id)
         .then(animals => this.setState({
             animals: animals
         })
