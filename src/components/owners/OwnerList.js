@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./owner.css"
+import { Link } from "react-router-dom"
 
 class OwnerList extends Component {
     render(){
@@ -12,7 +13,8 @@ class OwnerList extends Component {
                         <div className="card-body">
                             <h5 className="card-title">
                                 {owner.name}
-                                <p>{owner.phoneNumber}</p>
+                                {/* <p>{owner.phoneNumber}</p> */}
+                                <Link className="nav-link" to={`/owners/${owner.id}`}>Details</Link>
                                 <button
                                     onClick={() => this.props.deleteOwner(owner.id)}
                                     className="card-link">Delete</button>

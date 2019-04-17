@@ -8,15 +8,18 @@ import AnimalData from "../modules/AnimalManager"
 import EmployeeManager from "../modules/EmployeeManager"
 import OwnerManager from "../modules/OwnerManager"
 import LocationManager from "../modules/LocationManager"
+import { withRouter } from 'react-router'
+import AnimalDetail from './animals/AnimalDetail'
+import EmployeeDetail from "./employee/EmployeeDetail"
 
 class ApplicationViews extends Component {
 
-     /*
-        Although you will eventually be pulling your objects
-        from your json-server API, for this chapter, we're
-        faking it and just creating those arrays in the component
-        itself
-    */
+    /*
+       Although you will eventually be pulling your objects
+       from your json-server API, for this chapter, we're
+       faking it and just creating those arrays in the component
+       itself
+   */
 
     state = {
         locations: [],
@@ -27,8 +30,8 @@ class ApplicationViews extends Component {
 
     componentDidMount() {
         const newState = {}
-    
-            AnimalData.all("animals")
+
+        AnimalData.all("animals")
             .then(animals => newState.animals = animals)
             .then(() => EmployeeManager.all("employees"))
             .then(employees => newState.employees = employees)
@@ -40,27 +43,27 @@ class ApplicationViews extends Component {
     }
 
     deleteAnimal = id => {
-        AnimalData.removeAndList(id)
-        .then(animals => this.setState({
-            animals: animals
-        })
-      )
+        AnimalData.removeAndList(id, "animals")
+            .then(animals => {
+                this.props.history.push("/animals")
+                this.setState({ animals: animals })
+            })
     }
 
     deleteEmployee = id => {
-        EmployeeManager.removeAndList(id)
-        .then(employees => this.setState({
-            employees: employees
-        })
-      )
+        EmployeeManager.removeAndList(id, "employees")
+            .then(employees => this.setState({
+                employees: employees
+            })
+            )
     }
 
     deleteOwner = id => {
-        OwnerManager.removeAndList(id)
-        .then(owners => this.setState({
-            owners: owners
-        })
-      )
+        OwnerManager.removeAndList(id, "ownersFromAPI")
+            .then(owners => this.setState({
+                owners: owners
+            })
+            )
     }
 
     render() {
@@ -69,18 +72,46 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route path="/animals" render={(props) => {
+                <Route exact path="/animals" render={(props) => {
                     return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
-                <Route path="/employees" render={(props) => {
+                <Route exact path="/employees" render={(props) => {
                     return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} />
                 <Route path="/owners" render={(props) => {
-                    return <OwnerList deleteOwner={this.deleteOwner}owners={this.state.owners} />
+                    return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />
+                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                    // Find the animal with the id of the route parameter
+                    let animal = this.state.animals.find(animal =>
+                        animal.id === parseInt(props.match.params.animalId)
+                    )
+
+                    // If the animal wasn't found, create a default one
+                    if (!animal) {
+                        animal = { id: 404, name: "404", breed: "Dog not found" }
+                    }
+
+                    return <AnimalDetail animal={animal}
+                        deleteAnimal={this.deleteAnimal} />
+                }} />
+                <Route path="/employees/:employeeId(\d+)" render={(props) => {
+                    // Find the animal with the id of the route parameter
+                    let employee = this.state.employees.find(employee =>
+                        employee.id === parseInt(props.match.params.employeeId)
+                    )
+
+                    // If the animal wasn't found, create a default one
+                    if (!employee) {
+                        employee = { id: 404, name: "404", breed: "Dog not found" }
+                    }
+
+                    return <EmployeeDetail employee={employee} deleteEmployee={this.deleteEmployee} />
+                }}
+                />
             </React.Fragment>
         )
     }
 }
 
-export default ApplicationViews
+export default withRouter(ApplicationViews)

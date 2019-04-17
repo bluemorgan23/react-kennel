@@ -15,5 +15,14 @@ export default Object.create(null, {
         value: function (resource) {
             return fetch(`${remoteURL}/${resource}`).then(e => e.json())
         }
+    },
+    removeAndList: {
+        value: function ( id, resource ) {
+            return fetch(`${remoteURL}/${resource}/${id}`, {
+                            method: "DELETE"
+                        })
+                        .then(e => e.json())
+                        .then(() => this.all(resource))
+        }
     }
 })
