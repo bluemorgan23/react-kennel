@@ -5,10 +5,6 @@
       "name": "Jessica Younker"
     },
     {
-      "id": 2,
-      "name": "Jordan Nelson"
-    },
-    {
       "id": 3,
       "name": "Zoe LeBlanc"
     }
@@ -28,15 +24,13 @@
   "animals": [
     {
       "id": 2,
-      "name": "Jack"
-    },
-    {
-      "id": 4,
-      "name": "Henley"
+      "name": "Jack",
+      "breed": "Pitbull"
     },
     {
       "id": 5,
-      "name": "Derkins"
+      "name": "Derkins",
+      "breed": "Border Collie"
     }
   ],
   "ownersFromAPI": [
@@ -44,11 +38,6 @@
       "id": 1,
       "name": "Bob",
       "phoneNumber": "867-5309"
-    },
-    {
-      "id": 2,
-      "name": "Tom",
-      "phoneNumber": "330-8004"
     },
     {
       "id": 3,
