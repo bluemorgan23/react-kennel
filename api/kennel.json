@@ -2,7 +2,18 @@
   "employees": [
     {
       "id": 3,
-      "name": "Zoe LeBlanc"
+      "name": "Zoe LeBlanc",
+      "locationId": 1
+    },
+    {
+      "id": 1,
+      "name": "Bob",
+      "locationId": 2
+    },
+    {
+      "id": 2,
+      "name": "Tom",
+      "locationId": 1
     }
   ],
   "locationsFromAPI": [
@@ -21,12 +32,14 @@
     {
       "id": 2,
       "name": "Jack",
-      "breed": "Pitbull"
+      "breed": "Pitbull",
+      "employeeId": 1
     },
     {
       "id": 5,
       "name": "Derkins",
-      "breed": "Border Collie"
+      "breed": "Border Collie",
+      "employeeId": 2
     },
     {
       "name": "Meeha",
@@ -39,12 +52,20 @@
     {
       "id": 1,
       "name": "Bob",
-      "phoneNumber": "867-5309"
+      "phoneNumber": "867-5309",
+      "animalId": 2
     },
     {
       "id": 4,
       "name": "Terry",
-      "phoneNumber": "214-0938"
+      "phoneNumber": "214-0938",
+      "animalId": 5
+    },
+    {
+      "id": 2,
+      "name": "Jerry",
+      "phoneNumber": "645-0123",
+      "animalId": 7
     }
   ]
 }
