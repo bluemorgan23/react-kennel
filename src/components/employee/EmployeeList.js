@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import "./employee.css"
-import { Link } from "react-router-dom"
-import AnimalCard from "../animals/AnimalCard"
+// import { Link } from "react-router-dom"
+// import AnimalCard from "../animals/AnimalCard"
+import EmployeeCard from './EmployeeCard';
 
 class EmployeeList extends Component {
     render() {
@@ -19,27 +20,7 @@ class EmployeeList extends Component {
                 <section className="employees content">
                 {
                 this.props.employees.map(employee =>
-                    <div key={employee.id} className="card card--employee">
-                        <div className="card-body">
-                            <h5 className="card-title">
-                                {/* <img src={person} className="icon--employee" /> */}
-                                {employee.name}
-                            <a href="#"
-                                onClick={() => this.props.deleteEmployee(employee.id)}
-                                className="card-link">Delete</a>
-                            </h5>
-
-                            <h6 className="card-subtitle mb-2 text-muted">Caretaker For</h6>
-                            <div className="animals--caretaker">
-                            {
-                                this.props.animals
-                                    .filter(anml => anml.employeeId === employee.id)
-                                    .map(anml => <AnimalCard key={anml.id} animal={anml} {...this.props} />)
-                            }
-                            </div>
-
-                        </div>
-                    </div>
+                    <EmployeeCard key={employee.id} employee={employee} {...this.props} animals={this.props.animals}/>
                 )
             }
                 </section>

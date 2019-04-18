@@ -2,15 +2,18 @@
   "employees": [
     {
       "id": 3,
-      "name": "Zoe LeBlanc"
+      "name": "Zoe LeBlanc",
+      "locationId": 1
     },
     {
       "id": 1,
-      "name": "Bob"
+      "name": "Bob",
+      "locationId": 2
     },
     {
       "id": 2,
-      "name": "Tom"
+      "name": "Tom",
+      "locationId": 1
     }
   ],
   "locationsFromAPI": [
