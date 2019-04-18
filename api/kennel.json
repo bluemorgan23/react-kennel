@@ -1,20 +1,8 @@
 {
   "employees": [
     {
-      "id": 1,
-      "name": "Jessica Younker"
-    },
-    {
-      "id": 2,
-      "name": "Jordan Nelson"
-    },
-    {
       "id": 3,
       "name": "Zoe LeBlanc"
-    },
-    {
-      "id": 4,
-      "name": "Blaise Roberts"
     }
   ],
   "locationsFromAPI": [
@@ -32,19 +20,13 @@
   "animals": [
     {
       "id": 2,
-      "name": "Jack"
-    },
-    {
-      "id": 4,
-      "name": "Henley"
+      "name": "Jack",
+      "breed": "Pitbull"
     },
     {
       "id": 5,
-      "name": "Derkins"
-    },
-    {
-      "id": 6,
-      "name": "Checkers"
+      "name": "Derkins",
+      "breed": "Border Collie"
     }
   ],
   "ownersFromAPI": [
@@ -52,11 +34,6 @@
       "id": 1,
       "name": "Bob",
       "phoneNumber": "867-5309"
-    },
-    {
-      "id": 2,
-      "name": "Tom",
-      "phoneNumber": "330-8004"
     },
     {
       "id": 3,
@@ -67,16 +44,6 @@
       "id": 4,
       "name": "Terry",
       "phoneNumber": "214-0938"
-    },
-    {
-      "id": 5,
-      "name": "Mary",
-      "phoneNumber": "867-5309"
-    },
-    {
-      "id": 6,
-      "name": "Maury",
-      "phoneNumber": "235-7684"
     }
   ]
 }

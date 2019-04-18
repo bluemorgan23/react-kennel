@@ -1,11 +1,15 @@
-const baseURL = "http://localhost:5002/locationsFromAPI"
+import APIManager from "./APIManager";
 
-export default {
-    get(id) {
-        return fetch(`${baseURL}/${id}`).then(r => r.json())
-    },
+// const baseURL = "http://localhost:5002/locationsFromAPI"
 
-    getAll() {
-        return fetch(`${baseURL}`).then(r => r.json())
-    }
-}
+// export default {
+//     get(id) {
+//         return fetch(`${baseURL}/${id}`).then(r => r.json())
+//     },
+
+//     getAll() {
+//         return fetch(`${baseURL}`).then(r => r.json())
+//     }
+// }
+
+export default Object.create(APIManager)

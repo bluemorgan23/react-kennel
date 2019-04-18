@@ -1,3 +1,19 @@
 .content {
     margin-top: 50px;
+    
 }
+
+.locationWrapper {
+    text-align: center
+}
+
+.section-header {
+    text-align: center
+}
+
+.locationCard {
+    display: flex;
+    justify-content: space-around
+}
+
+
