@@ -27,6 +27,12 @@
       "id": 5,
       "name": "Derkins",
       "breed": "Border Collie"
+    },
+    {
+      "name": "Meeha",
+      "breed": "SHitzu",
+      "employeeId": 3,
+      "id": 7
     }
   ],
   "ownersFromAPI": [
@@ -34,11 +40,6 @@
       "id": 1,
       "name": "Bob",
       "phoneNumber": "867-5309"
-    },
-    {
-      "id": 3,
-      "name": "Jerry",
-      "phoneNumber": "457-0312"
     },
     {
       "id": 4,

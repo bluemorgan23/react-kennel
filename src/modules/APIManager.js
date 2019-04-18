@@ -24,5 +24,16 @@ export default Object.create(null, {
                         .then(e => e.json())
                         .then(() => this.all(resource))
         }
+    },
+    post: {
+        value: function (resource, thingToAdd) {
+            return fetch(`${remoteURL}/${resource}`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(thingToAdd)
+            }).then(r => r.json())
+        }
     }
 })
