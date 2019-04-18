@@ -9,7 +9,7 @@ export default class EmployeeCard extends Component {
                             <h5 className="card-title">
                                 {/* <img src={person} className="icon--employee" /> */}
                                 {this.props.employee.name}
-                            <a href="#"
+                            <a href="#" 
                                 onClick={() => this.props.deleteEmployee(this.props.employee.id)}
                                 className="card-link">Delete</a>
                             </h5>
@@ -19,7 +19,7 @@ export default class EmployeeCard extends Component {
                             {
                                 this.props.animals
                                     .filter(anml => anml.employeeId === this.props.employee.id)
-                                    .map(anml => <AnimalCard key={anml.id} animal={anml} {...this.props} />)
+                                    .map(anml => <AnimalCard key={anml.id} animal={anml} {...this.props} deleteAnimal={this.props.deleteAnimal}/>)
                             }
                             </div>
 

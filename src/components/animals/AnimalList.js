@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import "./animal.css"
-import { Link } from "react-router-dom";
 import AnimalCard from "./AnimalCard"
 
 class AnimalList extends Component {

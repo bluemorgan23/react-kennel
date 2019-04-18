@@ -35,5 +35,16 @@ export default Object.create(null, {
                 body: JSON.stringify(thingToAdd)
             }).then(r => r.json())
         }
+    },
+    put: {
+        value: function (resource, itemToEdit) {
+            return fetch(`${remoteURL}/${resource}/${itemToEdit.id}`, {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(itemToEdit)
+            }).then(r => r.json())
+        }
     }
 })
