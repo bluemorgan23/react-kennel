@@ -24,3 +24,12 @@
     margin: 12px 0 0 0;
     font-size: 0.7em;
 }
+
+.employeeButton {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.employeeForm {
+    margin: 50px 10px 0 10px;
+}
