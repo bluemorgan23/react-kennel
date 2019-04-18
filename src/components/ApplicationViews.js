@@ -104,10 +104,20 @@ class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
-                    return <LocationList locations={this.state.locations} />
+                    if(this.isAuthenticated()){
+                        return <LocationList locations={this.state.locations} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                        
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    if(this.isAuthenticated()){
+                        return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                        
                 }} />
                 <Route path="/animals/new" render={(props) => {
                     return <AnimalForm {...props}
@@ -115,7 +125,12 @@ class ApplicationViews extends Component {
                         employees={this.state.employees} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    if(this.isAuthenticated()){
+                        return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                        
                 }} />
                 <Route path="/employees/new" render={(props) => {
                     return <EmployeeForm {...props}

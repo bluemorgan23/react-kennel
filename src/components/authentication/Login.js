@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import "./login.css"
 
 export default class Login extends Component {
 
@@ -51,7 +51,7 @@ export default class Login extends Component {
                     id="password"
                     placeholder="Password"
                     required="" />
-                <button type="submit">
+                <button type="submit" onClick={this.handleLogin}>
                     Sign in
                 </button>
             </form>
