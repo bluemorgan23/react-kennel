@@ -11,6 +11,8 @@ import LocationManager from "../modules/LocationManager"
 import { withRouter } from 'react-router'
 import AnimalDetail from './animals/AnimalDetail'
 import EmployeeDetail from "./employee/EmployeeDetail"
+import LocationDetail from "./locations/LocationDetail"
+import OwnersDetail from "./owners/OwnersDetail"
 
 class ApplicationViews extends Component {
 
@@ -78,7 +80,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} />
-                <Route path="/owners" render={(props) => {
+                <Route exact path="/owners" render={(props) => {
                     return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />
                 <Route path="/animals/:animalId(\d+)" render={(props) => {
@@ -107,6 +109,34 @@ class ApplicationViews extends Component {
                     }
 
                     return <EmployeeDetail employee={employee} deleteEmployee={this.deleteEmployee} />
+                }}
+                />
+                <Route path="/locations/:locationId(\d+)" render={(props) => {
+                    // Find the animal with the id of the route parameter
+                    let location = this.state.locations.find(location=>
+                        location.id === parseInt(props.match.params.locationId)
+                    )
+
+                    // If the animal wasn't found, create a default one
+                    if (!location) {
+                        location = { id: 404, name: "404", breed: "Dog not found" }
+                    }
+
+                    return <LocationDetail location={location} />
+                }}
+                />
+                <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                    // Find the animal with the id of the route parameter
+                    let owner = this.state.owners.find(owner =>
+                        owner.id === parseInt(props.match.params.ownerId)
+                    )
+
+                    // If the animal wasn't found, create a default one
+                    if (!owner) {
+                        owner = { id: 404, name: "404", breed: "Dog not found" }
+                    }
+
+                    return <OwnersDetail owner={owner} deleteOwner={this.deleteOwner} />
                 }}
                 />
             </React.Fragment>

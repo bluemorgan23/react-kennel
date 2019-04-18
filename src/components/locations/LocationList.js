@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import "./location.css"
+import { Link } from "react-router-dom"
 
 export default class LocationList extends Component {
     render(){
         return (
             <div className="content">
-                <h2>Location List</h2>
+                <h2 className="section-header">Location List</h2>
                 <div className="locationWrapper">
                 <section className="locationCard">
                         {
                             this.props.locations.map(location => 
-                                <div key={location.id}>
-                                    <h5>{location.name}</h5>
-                                    <p>{location.address}</p>
+                                <div className="card"key={location.id}>
+                                    <h5 className="card-title">{location.name}</h5>
+                                    <Link className="nav-link" to={`/locations/${location.id}`}>Details</Link>
+                                    {/* <p className="card-text">{location.address}</p> */}
                                 </div>
                                 )
                         }
